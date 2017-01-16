@@ -1,15 +1,16 @@
 $(document).ready(function() {
   $("#results").hide();
 
-  var url = "https://crossorigin.me/https://en.wikipedia.org/w/api.php?action=opensearch&search=";
+  var url = "https://en.wikipedia.org/w/api.php?action=opensearch&search=";
   var searchContent;
-  var tag = "&limit=10&format=json";
+  var tag = "&limit=10&format=json&callback=?";
   var ani = true;
 
   function getInfo() {
     var apiURL = url + searchContent + tag;
 
     $.getJSON(apiURL, function(json) {
+      console.log(json.responseData);
       if (ani === true) {
         $("#searchBar").animate({
           'margin-top': "-=18%"
